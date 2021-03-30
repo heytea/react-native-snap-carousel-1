@@ -1218,7 +1218,7 @@ export class Carousel<TData> extends React.Component<
       };
   }
 
-  _getComponentStaticProps () {
+  private _getComponentStaticProps () {
       const { hideCarousel } = this.state;
       const {
           activeSlideAlignment,
