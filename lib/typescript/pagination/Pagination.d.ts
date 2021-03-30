@@ -39,7 +39,7 @@ export default class Pagination<TData> extends PureComponent<PaginationProps<TDa
     constructor(props: PaginationProps<TData>);
     _needsRTLAdaptations(): boolean;
     get _activeDotIndex(): number;
-    get dots(): React.ReactElement<any, string | ((props: any) => React.ReactElement<any, string | any | (new (props: any) => React.Component<any, any, any>)> | null) | (new (props: any) => React.Component<any, any, any>)> | React.FunctionComponentElement<any>[];
+    get dots(): React.ReactElement<any, string | React.JSXElementConstructor<any>> | React.FunctionComponentElement<any>[];
     render(): false | JSX.Element;
 }
 export {};
