@@ -948,10 +948,10 @@ export class Carousel<TData> extends React.Component<
           this._getScrollOffset(event) :
           this._currentScrollOffset;
       const nextActiveItem = this._getActiveItem(scrollOffset);
-      const hasSnapped = this._isMultiple(
-          scrollOffset,
-          this.props.vertical ? this.props.itemHeight : this.props.itemWidth
-      );
+      // const hasSnapped = this._isMultiple(
+      //     scrollOffset,
+      //     this.props.vertical ? this.props.itemHeight : this.props.itemWidth
+      // );
 
       // WARNING: everything in this condition will probably need to be called on _snapToItem as well because:
       // 1. `onMomentumScrollEnd` won't be called if the scroll isn't animated
@@ -960,9 +960,10 @@ export class Carousel<TData> extends React.Component<
           this._activeItem = nextActiveItem;
           onSnapToItem && onSnapToItem(this._getDataIndex(nextActiveItem));
 
-          if (hasSnapped) {
+          // 当轮播支持无限滚动时，滑动过快会导致到最后一张时无法滑动
+          // if (hasSnapped) {
               this._repositionScroll(nextActiveItem);
-          }
+          // }
       }
 
       onMomentumScrollEnd && onMomentumScrollEnd(event);
