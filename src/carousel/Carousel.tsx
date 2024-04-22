@@ -137,7 +137,17 @@ export class Carousel<TData> extends React.Component<
       this._displayWarnings(props);
   }
 
-  componentDidMount () {
+  componentWillReceiveProps(nextProps: Readonly<CarouselProps<TData>>, nextContext: any): void {
+    if(nextProps.autoplay !== this._autoplay){
+      this._autoplaying = false
+      if(nextProps.autoplay){
+          this.startAutoplay()
+      }else{
+          this.stopAutoplay()
+      }
+    }
+}
+componentDidMount () {
       const { apparitionDelay, autoplay, firstItem } = this.props;
 
       this._mounted = true;
